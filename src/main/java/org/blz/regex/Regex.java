@@ -11,6 +11,7 @@ public class Regex {
         regex.firstNameInput();
         regex.lastNameInput();
         regex.emailInput();
+        regex.numberInput();
     }
 
     public void firstNameInput() {
@@ -49,6 +50,17 @@ public class Regex {
         } else {
             System.out.println("\n invalid  email ID");
         }
+    }
 
+    public void numberInput() {
+        String numberInput = "91 9919819801";
+        String regex = "^[0-9]{2}\\s{1}[0-9]{10}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(numberInput);
+        if (matcher.matches()) {
+            System.out.println("\n VALID  mobileNumber " );
+        } else {
+            System.out.println("\n invalid  mobileNumber");
+        }
     }
 }
