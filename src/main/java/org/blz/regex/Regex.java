@@ -13,6 +13,7 @@ public class Regex {
         regex.emailInput();
         regex.numberInput();
         regex.passwordInput1();
+        regex.passwordInput2();
     }
 
     public void firstNameInput() {
@@ -74,6 +75,18 @@ public class Regex {
             System.out.println("\n VALID  rule 1 passed " );
         } else {
             System.out.println("\n invalid rule 1  not passed ");
+        }
+    }
+
+    public void passwordInput2() {
+        String passwordInput2 = "SandeepVarma";
+        String regex = "^[a-zA-Z]{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(passwordInput2);
+        if (matcher.matches()) {
+            System.out.println("\n VALID  rule 2 passed " );
+        } else {
+            System.out.println("\n invalid rule 2  not passed ");
         }
     }
 }
