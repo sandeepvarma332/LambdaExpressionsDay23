@@ -6,114 +6,57 @@ import java.util.regex.Pattern;
 
 
 public class Regex {
-    public static void main(String[] args) {
-        Regex regex = new Regex();
-        regex.firstNameInput();
-        regex.lastNameInput();
-        regex.emailInput();
-        regex.numberInput();
-        regex.passwordInput1();
-        regex.passwordInput2();
-        regex.passwordInput3();
-        regex.passwordInput4();
-    }
+    public static String regex;
 
-    public void firstNameInput() {
-        String firstNameInput = "Sandeep";
-        String regex = "^[[a-z]{1}A-Z]{1,}$";
+    public static void name(String name) {
+        regex = "^[A-Z]{1}[a-z]{2,}$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(firstNameInput);
+        Matcher matcher = pattern.matcher(name);
         if (matcher.matches()) {
-            System.out.println("\n VALID  Name ");
+            System.out.println("\nYour name " + name + " is in correct format.");
         } else {
-            System.out.println("\n invalid Name");
+            System.out.println("\nYour name is not in format.");
+            if (name.equals(UserDetails.first_name)) {
+                UserDetails.firstname();
+            } else if (name.equals(UserDetails.last_name)) {
+                UserDetails.lastname();
+            }
         }
     }
 
-    public void lastNameInput() {
-
-        String lastNameInput = "Varma";
-        String regex = "^[[a-z]{1}A-Z]{2,}$";
-
+    public static void mail(String mailID) {
+        regex = "^[a-z0-9]{1,}+([_+-.][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}+(.[a-z]{2,3}){0,1}$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(lastNameInput);
+        Matcher matcher = pattern.matcher(mailID);
         if (matcher.matches()) {
-            System.out.println("\n VALID  lastName ");
+            System.out.println("\nYour mailID " + mailID + " is in correct format.");
         } else {
-            System.out.println("\n invalid lastName");
+            System.out.println("\nYour mailID is not in format.");
+            UserDetails.mail();
         }
     }
 
-    public void emailInput() {
-        String emailInput = "abc.xyz@bl.in";
-        String regex = "^[a-z0-9]+([_+-.][0-9a-z]+)*@[a-z]+.[a-z]{2,3}$";
+    public static void phonenumber(String phonenumber) {
+        regex = "^[0-9]{2}\\s{1}[0-9]{10}$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(emailInput);
+        Matcher matcher = pattern.matcher(phonenumber);
         if (matcher.matches()) {
-            System.out.println("\n VALID  email ID ");
+            System.out.println("\nYour phone number " + phonenumber + " is in correct format.");
         } else {
-            System.out.println("\n invalid  email ID");
+            System.out.println("\nYour phone number is not in format.");
+            UserDetails.phonenumber();
         }
     }
 
-    public void numberInput() {
-        String numberInput = "91 9919819801";
-        String regex = "^[0-9]{2}\\s{1}[0-9]{10}$";
+    public static void password(String password) {
+        regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*+=])(?=\\s+$).{8,}$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(numberInput);
+        Matcher matcher = pattern.matcher(password);
         if (matcher.matches()) {
-            System.out.println("\n VALID  mobileNumber " );
+            System.out.println("\nYour password " + password + " is in correct format.");
         } else {
-            System.out.println("\n invalid  mobileNumber");
-        }
-    }
-
-    public void passwordInput1() {
-        String passwordInput1 = "SandeepVarma";
-        String regex = "^[a-zA-Z]{8,}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(passwordInput1);
-        if (matcher.matches()) {
-            System.out.println("\n VALID  rule 1 passed " );
-        } else {
-            System.out.println("\n invalid rule 1  not passed ");
-        }
-    }
-
-    public void passwordInput2() {
-        String passwordInput2 = "SandeepVarma";
-        String regex = "^[a-zA-Z]{8,}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(passwordInput2);
-        if (matcher.matches()) {
-            System.out.println("\n VALID  rule 2 passed " );
-        } else {
-            System.out.println("\n invalid rule 2  not passed ");
-        }
-    }
-
-    public void passwordInput3() {
-        String passwordInput3 = "SandeepVarma99";
-        String regex = "^[a-zA-Z]{8,}[0-9]{1,}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(passwordInput3);
-        if (matcher.matches()) {
-            System.out.println("\n VALID  rule 3 passed " );
-        } else {
-            System.out.println("\n invalid rule 3  not passed ");
-        }
-    }
-
-    public void passwordInput4() {
-        String passwordInput4 = "SandeepVarma99@";
-        String regex = "^[a-zA-Z]{8,}[0-9]{2,}[@-_]$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(passwordInput4);
-        if (matcher.matches()) {
-            System.out.println("\n VALID  rule 4 passed " );
-        } else {
-            System.out.println("\n invalid rule 4  not passed ");
+            System.out.println("\nYour password is not in format.");
+            UserDetails.password();
         }
     }
 }
-
